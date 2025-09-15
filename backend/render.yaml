@@ -1,0 +1,21 @@
+
+services:
+  - type: web
+    name: fanpit-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    envVars:
+      - key: MONGODB_URI
+        fromSecret: MONGODB_URI
+      - key: JWT_SECRET
+        fromSecret: JWT_SECRET
+      - key: JWT_REFRESH_SECRET
+        fromSecret: JWT_REFRESH_SECRET
+      - key: RAZORPAY_KEY_ID
+        fromSecret: RAZORPAY_KEY_ID
+      - key: RAZORPAY_KEY_SECRET
+        fromSecret: RAZORPAY_KEY_SECRET
+      - key: FRONTEND_URL
+        value: https://your-frontend.vercel.app
